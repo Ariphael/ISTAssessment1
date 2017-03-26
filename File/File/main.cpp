@@ -1,11 +1,11 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <stdio.h>
+#include <iostream> //Allows us to print and request input.
+#include <fstream> //Allows us to use text files.
+#include <string> //Allows us to use std::string variables.
+#include <stdio.h> //Allows us to delete and rename files.
 
 int main() {
 	std::fstream file("Database.txt", std::ios::in | std::ios::out | std::ios::app);
-	if (!file) {
+	if (!file) { //Error Checking
 		std::cout << "Error: Failed to create file." << std::endl;
 	}
 	else {
@@ -15,16 +15,15 @@ int main() {
 		std::cout << "1 - Append new records\n2 - Edit records\n3 - Remove records\n4 - Display records\n5 - Exit\n";
 		std::cin >> choice;
 		/*
-		1 - Append
-		2 - Edit
-		3 - Remove
-		4 - Display
-		5 - exit
+		Case 1 - Append
+		Case 2 - Edit
+		Case 3 - Remove
+		Case 4 - Display
+		Case 5 - exit
 		*/
-	
 		switch (choice) {
 		case 1:
-			std::cin.ignore();
+			std::cin.ignore(); //Skips characters in the input stream to avoid bugs.
 			std::cout << "Name: ";
 			std::getline(std::cin, name);
 			std::cout << "Company: ";
@@ -62,6 +61,11 @@ int main() {
 						goto record;
 					}
 					std::fstream EditedFile("nDatabase.txt", std::ios::in | std::ios::out | std::ios::app);
+					/*
+					In c++, the only way to modify a line is to completely rewrite the text file, which involves creating a new text file,
+					entering everything in only modifying the line that needs to be modified, remove the original file, and rename the new file to
+					the old file's name.
+					*/
 					if (!EditedFile) {
 						std::cout << "Failed to create new database.txt" << std::endl;
 						break;
@@ -93,6 +97,7 @@ int main() {
 			std::cout << "Enter Name: ";
 			std::getline(std::cin, name);
 			std::fstream EditFile("nDatabase.txt", std::ios::in | std::ios::out | std::ios::app);
+			//Same thing as case 2, except this is removing a line.
 			if (!EditFile) {
 				std::cout << "Unable to created new database.txt" << std::endl;
 			}
