@@ -11,15 +11,13 @@ int main() {
 	else {
 		int choice;
 		std::string name, company, model, color, line;
-		bool exit = false;
-		std::cout << "1 - Append new records\n2 - Edit records\n3 - Remove records\n4 - Display records\n5 - Exit\n";
+		std::cout << "1 - Append new records\n2 - Edit records\n3 - Remove records\n4 - Display records\n";
 		std::cin >> choice;
 		/*
 		Case 1 - Append
 		Case 2 - Edit
 		Case 3 - Remove
 		Case 4 - Display
-		Case 5 - exit
 		*/
 		switch (choice) {
 		case 1:
@@ -126,9 +124,6 @@ int main() {
 				std::getline(file, line);
 				std::cout << line << std::endl;
 			}
-			break;
-		case 5:
-			exit = true;
 			break;
 		default:
 			std::cout << choice << " is not a valid command." << std::endl;
