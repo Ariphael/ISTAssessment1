@@ -30,7 +30,7 @@ int main() {
 			std::getline(std::cin, model);
 			std::cout << "Colour: ";
 			std::getline(std::cin, color);
-			file << name << " " << company << " " << model << " " << color << "\n";
+			file <<  name << " " << company << " " << model << " " << color << "\n";
 			break;
 		case 2:
 			std::cin.ignore();
@@ -105,7 +105,12 @@ int main() {
 					if (line.find(name) != std::string::npos) {
 						line = "";
 					}
-					EditFile << line;
+					if (line.size() > 0) {
+						EditFile << line << "\n";
+					}
+					else {
+						EditFile << line;
+					}
 				}
 				file.close();
 				EditFile.close();
