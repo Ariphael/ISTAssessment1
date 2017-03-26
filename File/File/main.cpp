@@ -8,39 +8,41 @@ int main() {
 		std::cout << "Error: Failed to create file." << std::endl;
 	}
 	else {
-		bool choice;
-		std::string name;
-		std::string make;
-		std::string model;
-		std::string colour;
-		std::cout << "Welcome to the offline car depository program!" << std::endl;
-		std::cout << "1 to search for information about a person's car properties." << std::endl;
-		std::cout << "0 to register information about a person's car properties." << std::endl;
+		int choice;
+		std::string name, company, model, color;
+		std::cout << "1 - Append new records\n2 - Edit records\n3 - Remove records\n";
 		std::cin >> choice;
-		if (!choice) {
+		/*
+		1 - Append
+		2 - Edit
+		3 - Remove
+		*/
+		switch (choice) {
+		case 1:
+			std::cin.ignore();
 			std::cout << "Name: ";
-			file << "Name: \n";
-			std::getline(std::cin, make);
-			file << make;
-
-			std::cout << "Make: ";
-			file << "Make: \n";
-			std::getline(std::cin, make);
-			file << make;
-
+			std::getline(std::cin, name);
+			std::cout << "Company: ";
+			std::getline(std::cin, company);
 			std::cout << "Model: ";
-			file << "Model: \n";
 			std::getline(std::cin, model);
-			file << model;
-
 			std::cout << "Colour: ";
-			file << "Colour: \n";
-			std::getline(std::cin, colour);
-			file << colour;
-		}
-		else {
+			std::getline(std::cin, color);
+			file << "Name: " << name << std::endl;
+			file << "Company: " << company << std::endl;
+			file << "Model: " << model << std::endl;
+			file << "Colour: " << color << std::endl;
+			break;
+		case 2:
 
+			break;
+		case 3:
+
+			break;
+		default:
+			std::cout << choice << " is not a valid command." << std::endl;
 		}
-		file.close();
 	}
+	system("pause");
+	return 0;
 }
